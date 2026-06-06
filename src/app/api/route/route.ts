@@ -203,8 +203,17 @@ export async function POST(req: NextRequest) {
     }
 
     // Parse and validate JSON
-    const clean = text.replace(/```json|```/g, '').trim()
-      .replace(/^[^{]*({.*})[^}]*$/s, '$1')
+    const clean = text
+      .replace(/```json|```/g, '')
+      .trim()
+
+    const start = clean.indexOf('{')
+    const end = clean.lastIndexOf('}')
+
+    const jsonText =
+      start !== -1 && end !== -1
+        ? clean.substring(start, end + 1)
+        : clean
     const parsed = JSON.parse(clean)
 
     return NextResponse.json(parsed)

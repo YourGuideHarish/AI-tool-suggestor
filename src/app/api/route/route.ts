@@ -180,7 +180,7 @@ export async function POST(req: NextRequest) {
         body: JSON.stringify({
           system_instruction: { parts: [{ text: systemPrompt }] },
           contents: [{ role: 'user', parts: [{ text: userMessage }] }],
-          tools: [{ google_search: {} }],
+          ///tools: [{ google_search: {} }],///
           generationConfig: {
             temperature: 0.7,
             maxOutputTokens: 2048,
@@ -214,7 +214,7 @@ export async function POST(req: NextRequest) {
       start !== -1 && end !== -1
         ? clean.substring(start, end + 1)
         : clean
-    const parsed = JSON.parse(clean)
+    const parsed = JSON.parse(jsonText)
 
     return NextResponse.json(parsed)
   } catch (err) {

@@ -76,7 +76,7 @@ function ToolCard({ tool, primary = false }: { tool: Tool; primary?: boolean }) 
       <div className="tool-header">
         <div className="tool-name">{tool.name}</div>
         <div className="tool-badges">
-          {tool.badges.map((b, i) => <span key={i} className={badgeClass(b)}>{b}</span>)}
+          {(tool.badges || []).map((b, i) => <span key={i} className={badgeClass(b)}>{b}</span>)}
         </div>
       </div>
       <div className="tool-why">{tool.why}</div>
@@ -84,7 +84,7 @@ function ToolCard({ tool, primary = false }: { tool: Tool; primary?: boolean }) 
         <>
           <div className="tool-steps-title">How to use it</div>
           <ol className="tool-steps">
-            {tool.steps.map((s, i) => (
+            {(tool.steps || []).map((s, i) => (
               <li key={i}>
                 <span className="step-n">{i + 1}</span>
                 <span>{s}</span>
@@ -253,14 +253,14 @@ export default function Home() {
         {phase === 'questions' && questions.length > 0 && (
           <div className="questions-panel">
             <div className="questions-title">A few quick questions →</div>
-            {questions.map((q, qi) => (
+            {(questions || []).map((q, qi) => (
               <div key={q.id} className="question-item" style={{ animationDelay: `${qi * 0.07}s` }}>
                 <div className="question-label">
                   <span className="q-num">Q{qi + 1}</span>
                   {q.text}
                 </div>
                 <div className="chip-group">
-                  {q.options.map((opt, oi) => (
+                  {(q.options || []).map((opt, oi) => (
                     <div
                       key={oi}
                       className={`chip${answers[q.id] === opt ? ' selected' : ''}`}
@@ -322,7 +322,7 @@ export default function Home() {
                   <div className="skills-title">
                     <span style={{ fontSize: 16 }}>◆</span> Claude built-in skills
                   </div>
-                  {result.claudeSkills.map((s, i) => (
+                  {(result.claudeSkills || []).map((s, i) => (
                     <div key={i} className="skill-item">
                       <div className="skill-dot" />
                       <div>
@@ -341,7 +341,7 @@ export default function Home() {
                 <div className="section-label anim-up" style={{ marginTop: 16 }}>Claude connectors</div>
                 <div className="connectors-section anim-up">
                   <div className="connectors-title">⟷ Connect external services</div>
-                  {result.claudeConnectors.map((c, i) => (
+                  {(result.claudeConnectors || []).map((c, i) => (
                     <div key={i} className="connector-item">
                       <div className="connector-dot" />
                       <div>
@@ -359,7 +359,7 @@ export default function Home() {
               <>
                 <div className="section-label anim-up" style={{ marginTop: 28 }}>Alternatives</div>
                 <div className="tools-grid">
-                  {result.alternativeTools.map((t, i) => <ToolCard key={i} tool={t} />)}
+                  {(result.alternativeTools || []).map((t, i) => <ToolCard key={i} tool={t} />)}
                 </div>
               </>
             )}

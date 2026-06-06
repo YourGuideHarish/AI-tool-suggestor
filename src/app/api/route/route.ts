@@ -180,10 +180,10 @@ export async function POST(req: NextRequest) {
         body: JSON.stringify({
           system_instruction: { parts: [{ text: systemPrompt }] },
           contents: [{ role: 'user', parts: [{ text: userMessage }] }],
+          tools: [{ google_search: {} }],
           generationConfig: {
             temperature: 0.7,
             maxOutputTokens: 2048,
-            responseMimeType: 'application/json',
           },
         }),
       }
@@ -204,6 +204,7 @@ export async function POST(req: NextRequest) {
 
     // Parse and validate JSON
     const clean = text.replace(/```json|```/g, '').trim()
+      .replace(/^[^{]*({.*})[^}]*$/s, '$1')
     const parsed = JSON.parse(clean)
 
     return NextResponse.json(parsed)

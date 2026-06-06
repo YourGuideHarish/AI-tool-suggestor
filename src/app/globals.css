@@ -9,9 +9,9 @@
   --text: #f0ede8;
   --text-2: #9e9b96;
   --text-3: #5a5855;
-  --accent: #f5a623;
-  --accent-dim: rgba(245,166,35,0.12);
-  --accent-dim2: rgba(245,166,35,0.06);
+  --accent: #a78bfa;
+  --accent-dim: rgba(167,139,250,0.12);
+  --accent-dim2: rgba(167,139,250,0.06);
   --green: #4ade80;
   --green-dim: rgba(74,222,128,0.1);
   --blue: #60a5fa;
@@ -181,7 +181,7 @@ body::before {
   letter-spacing: 0.04em;
   padding: 10px 24px;
   background: var(--accent);
-  color: #0a0a0a;
+  color: #ffffff;
   border: none;
   border-radius: var(--radius-sm);
   cursor: pointer;
@@ -337,7 +337,7 @@ body::before {
 .split-bar-fill {
   height: 100%;
   border-radius: 5px;
-  background: linear-gradient(90deg, var(--accent), #f5c842);
+  background: linear-gradient(90deg, var(--accent), #c4b5fd);
   transition: width 1s cubic-bezier(0.16,1,0.3,1);
 }
 .split-labels {
@@ -370,7 +370,7 @@ body::before {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent), #f5c842);
+  background: linear-gradient(90deg, var(--accent), #c4b5fd);
 }
 .tool-card:hover { border-color: var(--border-hover); }
 .tool-card.primary:hover { border-color: var(--accent); }
@@ -441,7 +441,7 @@ body::before {
   flex-shrink: 0;
   margin-top: 1px;
 }
-.tool-card.primary .step-n { background: var(--accent); color: #0a0a0a; }
+.tool-card.primary .step-n { background: var(--accent); color: #ffffff; }
 
 .tool-link {
   margin-top: 14px;
